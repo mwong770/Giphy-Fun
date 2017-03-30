@@ -1,0 +1,146 @@
+* {
+	box-sizing: border-box; 
+}
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+h1 {
+	text-align: left;
+	margin-left: 50px;
+}
+
+body {
+	text-align: center;
+	margin: 0 auto 60px auto;
+	background-color: #B2FF9E;
+	font-size: 20px;
+}
+
+#header {
+	margin: 0 auto;
+	height: 160px;
+	top: 0;
+	background-color: #086375;
+	padding-top: 20px;
+	color: white;
+	border-radius: 20px 20px 0 0;
+	border: solid black;
+	border-width: 1px 1px 0 1px;
+}
+
+#form {
+	height: 62px;
+	background-color: #086375;
+	padding-top: 10px;
+	border: solid 1px black;
+	border-radius: 0 0 20px 20px;
+}
+
+button, input {
+	border-radius: 10px;
+	text-align: center;
+}
+
+/*div {
+	border: solid black 2px;
+}*/
+
+input {
+	width: 100%;
+	float: right;
+	border: solid #B2FF9E 2px;
+	padding: 3px;
+}
+
+#submitButton {
+	margin-left: -2%;
+	border: solid #B2FF9E 2px;
+	float: left;
+	width: 100%;
+	background-color: #1DD3B0;
+}
+
+#clearGifButton {
+border: solid #B2FF9E 2px;
+width: 100%;
+float: left;
+background-color: #1DD3B0;
+}
+
+.topicButton {
+	min-width: 15%;
+	background-color: #086375;
+	border: solid 2px #1DD3B0;
+	text-transform: capitalize;
+	margin: 5px;
+	border-radius: 10px;
+
+}
+
+/*rating*/
+.topicDiv > p {
+	padding-left: 10px;
+	padding-right: 10px;
+	background-color: #086375;
+	border: solid 2px #1DD3B0;
+	color: white;
+	width: 70%;
+	margin: 8px auto;
+	border-radius: 10px;
+}
+
+/*.selectedGifTopic {
+	background: #086375;
+	border: solid black 2px;
+	text-align: center;
+	width: 80%;
+	border-radius: 10px;
+	text-align: center;
+	text-transform: capitalize;
+}*/
+
+
+
+
+
+
+
+
+.giphyDiv {
+	background-color: rgba(0,0,0,0.7);
+	display: inline-block;
+	color: white;
+	font-size: 22px;
+	margin: 15px;
+	border: 7px solid white;
+}
+
+.topicImage {
+	height: auto;
+	width: 25%;
+}
+
+.topicDiv {
+	height: auto;
+	width: 25%;
+		margin: 5px;
+	border: 2px solid white;
+	overflow: none;
+}
+
+
+footer {
+	position: absolute;
+	height: 60px;
+	bottom: 0;
+	width: 100%;
+	text-align: center;
+	background-color: #086375;
+	left: 0;
+	right: 0;
+	padding-top: 20px;
+	color: white;
+}

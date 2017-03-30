@@ -1,6 +1,9 @@
 <!DOCTYPE html>
+
 <html lang="en-us">
+
 <head>
+
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,30 +19,76 @@
 	<script src="https://code.jquery.com/jquery-3.1.1.js"></script>
 
 </head>
+
 <body>
 
+	<div id="header" class="container">
 
-			<a class="label label-success view" href="https://www.google.com/">click My A</a>
-			<span class="label label-success view" article-url="https://www.google.com/">Click My Span</span>
-			<script>
-			var url;
+		<div class="row">
+			<div class="col-xs-12 ">
+				<h1>Fun with Gifs</h1>
+			</div>
+		</div>
 
-			$(document).on("click", ".view", popupWindow);
+		<div class="row">
+			<div class="col-xs-12">
+				<h3>Click a button below to see related gifs or create a new button.</h3>
+			</div>
+		</div>
+
+	</div> <!--end header-->
+
+	<div id="form" class="container">
+		<div class="row">
+
+			<div class=" col-xs-offset-1 col-xs-4">	
+				<input type="text" id="searchTerm" placeholder="Gif Search" required>
+			</div>
+
+			<div class=" col-xs-3">
+				<button type="submit" class="button btn-2 btn-2c" id="submitButton">Add</button>
+			</div>
 			
-			$(".view").on("click", function() {
-				url = "https://www.google.com/";
+			<div class=" col-xs-3">
+				<button class="button btn-2 btn-2c" id="clearGifButton">Clear Gif</button>
+			</div>
 
-				window.open(url, "Newyork Times", "width=700,height=600");
+		</div>
+	</div> <!--end form-->
 	
-			});
+	<div id="buttonsDiv" class="container">
+		
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="buttonsDiv"></div>
+			</div>
+		</div>
 
-			// $(document).on("click",".view", popupWindow);
+	</div> <!--end buttonsDiv-->
 
+	<div id="gifsDiv" class="container">
 
-			</script>
+		<div class="row">
+			<div class="col-xs-12">
+				<h3 id="playOrFreeze">Click a gif to play or stop.</h3>
+			</div>
+		</div>
 
+		<div class="row">
+			<div class="col-xs-12">
+				<div id="gifs"></div>
+			</div>
+		</div>
 
-	
+	</div> <!--end gifsDiv-->
+
+	<footer>
+		<p>&copy; 2017 Maria Wong</p>
+	</footer>	
+
+	<script type="text/javascript" src="assets/javascript/app.js"></script>
+
 </body>
+
 </html>
 
