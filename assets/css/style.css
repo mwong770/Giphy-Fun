@@ -44,10 +44,6 @@ button, input {
 	text-align: center;
 }
 
-/*div {
-	border: solid black 2px;
-}*/
-
 input {
 	width: 100%;
 	float: right;
@@ -102,13 +98,6 @@ background-color: #1DD3B0;
 	text-transform: capitalize;
 }*/
 
-
-
-
-
-
-
-
 .giphyDiv {
 	background-color: rgba(0,0,0,0.7);
 	display: inline-block;
@@ -118,19 +107,18 @@ background-color: #1DD3B0;
 	border: 7px solid white;
 }
 
-.topicImage {
-	height: auto;
-	width: 25%;
+img {
+	width: 100%;
+	max-height: 200px;
 }
 
 .topicDiv {
-	height: auto;
-	width: 25%;
-		margin: 5px;
+	height: 250px;
+	width: 23%;
+	margin: 1%;
 	border: 2px solid white;
 	overflow: none;
 }
-
 
 footer {
 	position: absolute;
