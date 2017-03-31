@@ -2,7 +2,7 @@
 $(document).ready(function(event) {
 
 	// gif topic array
-	var topics = ["Donald Trump", "funny animals", "1980's cartoons", "movies", "fastest cars", "football", "landmarks", "web development"];
+	var topics = ["donald trump", "funny animals", "1980's cartoons", "movies", "fastest cars", "football", "landmarks", "web development"];
 
 	// Initial Ajax call
 	$.ajax({
