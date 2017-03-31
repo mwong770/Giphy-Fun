@@ -4,6 +4,14 @@ $(document).ready(function(event) {
 	// gif topic array
 	var topics = ["Donald Trump", "funny animals", "1980's cartoons", "movies", "fastest cars", "football", "landmarks", "web development"];
 
+	// Initial Ajax call
+	$.ajax({
+		url: "https://api.giphy.com/v1/gifs/search?q=funny&api_key=dc6zaTOxFJmzC&limit=10",
+        method: "GET"
+	}).done(function (topicGIF) {
+		ajaxResponse(topicGIF);
+	});
+
 	//removes message until needed
 	$("#playOrFreeze").hide();
 
@@ -43,40 +51,46 @@ $(document).ready(function(event) {
 			url: queryURL,
         	method: "GET"
 		}).done(function (topicGIF) {
-			console.log(topicGIF.data.length);
-			console.log(topicGIF);
-			// Empty section before displaying gifs
-			$("#gifs").empty();
 
-		if (topicGIF.data.length > 0 ) {
+				// Empty section before displaying gifs
+				$("#gifs").empty();
 
-			for(var j = 0; j < topicGIF.data.length; j++){
+				if (topicGIF.data.length > 0 ) {
 
-				// Create html elements 
-				var topicDiv = $("<div class='topicDiv pull-left'>");
-				var p = $("<p>");
-				var topicImg = $("<img>");
+					ajaxResponse(topicGIF);
+				}	
+				 	
+					else {
 
-				// Set image attributes 
-				topicImg.addClass("topicImg");
-				topicImg.attr("data-state","still");
-				topicImg.attr("data-still", topicGIF.data[j].images.fixed_height_still.url);
-				topicImg.attr("data-animate", topicGIF.data[j].images.fixed_height.url);
-			
-				// Get the image url and its rating
-				p.text("Rating : " + topicGIF.data[j].rating);
-				topicImg.attr("src",topicGIF.data[j].images.fixed_height_still.url);
-
-				// Append image and its rating
-				topicDiv.append(topicImg);
-				topicDiv.append(p);
-				$("#gifs").append(topicDiv);
-				$("#playOrFreeze").show();
-			}
-		} 	else 
-
-				$("#message").html("No gifs match your search. Please try another button.");
+							$("#message").html("No gifs match your search. Please try another button.");
+					}
 		});
+	}
+
+	//handles response received from ajax call
+	function ajaxResponse(response) {
+		for (var j = 0; j < response.data.length; j++) {
+			// Create html elements 
+			var topicDiv = $("<div class='topicDiv pull-left'>");
+			var p = $("<p>");
+			var topicImg = $("<img>");
+				
+			// Set image attributes 
+			topicImg.addClass("topicImg");
+			topicImg.attr("data-state","still");
+			topicImg.attr("data-still", response.data[j].images.fixed_height_still.url);
+			topicImg.attr("data-animate", response.data[j].images.fixed_height.url);
+			
+			// Get the image url and its rating	
+			p.text("Rating : " + response.data[j].rating);
+			topicImg.attr("src",response.data[j].images.fixed_height_still.url);
+
+			// Append image and its rating
+			topicDiv.append(topicImg);
+			topicDiv.append(p);
+			$("#gifs").append(topicDiv);
+			$("#playOrFreeze").show();
+		}
 	}
 
 	// animates and freezes gifs
