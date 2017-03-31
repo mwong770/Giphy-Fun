@@ -62,7 +62,8 @@ $(document).ready(function(event) {
 				 	
 					else {
 
-							$("#message").html("No gifs match your search. Please try another button.");
+							$("#message").html("No gifs match your search. Please try again.");
+							$("#playOrFreeze").hide();
 					}
 		});
 	}

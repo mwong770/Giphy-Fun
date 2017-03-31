@@ -12,6 +12,11 @@ h1 {
 	margin-left: 50px;
 }
 
+h3 {
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
 body {
 	text-align: center;
 	margin: 0 auto 60px auto;
@@ -68,10 +73,10 @@ button, #searchInput {
 }
 
 #clearGifButton {
-border: solid #B2FF9E 2px;
-width: 100%;
-float: left;
-background-color: #1DD3B0;
+	border: solid #B2FF9E 2px;
+	width: 100%;
+	float: left;
+	background-color: #1DD3B0;
 }
 
 #submitButton:hover {
@@ -137,6 +142,10 @@ img:hover {
 	overflow: none;
 }
 
+#gifsSection {
+	margin-bottom: 60px;
+}
+
 footer {
 	position: absolute;
 	height: 60px;
@@ -149,3 +158,178 @@ footer {
 	padding-top: 20px;
 	color: white;
 }
+
+/************ MEDIA 1200 MEDIA 1200 MEDIA 1200 MEDIA 1200 MEDIA 1200 *******************************/
+
+@media screen and (max-width: 1200px) {
+
+	h3 {
+		font-size: 21px;
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+
+	img {
+		height: 225px;
+	}
+
+	.topicDiv {
+		height: 275px;
+		width: 31%;
+	}
+
+	#gifsSection {
+		font-size: 19px;
+	};
+
+}
+
+/************ MEDIA 980 MEDIA 980 MEDIA 980 MEDIA 980 MEDIA 980 *******************************/
+
+@media screen and (max-width: 980px) {
+
+	h1 {
+		text-align: center;
+		margin: 0;
+		color: #B2FF9E;
+	}
+
+	h3 {
+		font-size: 21px;
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+
+	#message {
+		font-size: 20px;
+	}
+
+	.topicDiv {
+		width: 46%;
+		margin: 2%;
+	}
+
+}
+
+/************ MEDIA 768 MEDIA 768 MEDIA 768 MEDIA 768 MEDIA 768 *******************************/
+
+@media screen and (max-width: 768px) {
+
+	h1 {
+		text-align: center;
+		margin: 0;
+	}
+
+	h3 {
+		font-size: 21px;
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+
+	.gifFormButton {
+		font-size: 19px;
+	}
+
+	#message {
+		font-size: 20px;
+	}
+
+	.topicDiv {
+		width: 46%;
+		margin: 2%;
+	}
+}
+
+/************ MEDIA 640 MEDIA 640 MEDIA 640 MEDIA 640 MEDIA 640 *******************************/
+
+@media screen and (max-width: 640px) {
+
+	h1 {
+		text-align: center;
+		margin: 0;
+	}
+
+	h3 {
+		font-size: 20px;
+		margin-left: 75px;
+		margin-right: 75px;
+	}
+
+	.gifFormButton {
+		font-size: 18px;
+	}
+
+	#message {
+		font-size: 19px;
+	}
+
+	img {
+		height: 200px;
+	}
+
+	.topicDiv {
+		height: 250px;
+		width: 46%;
+		margin: 2%;
+	}
+
+	#gifsSection {
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+
+	.topicDiv > p {
+		width: 85%;
+	}
+	
+}
+
+/************ MEDIA 520 MEDIA 520 MEDIA 520 MEDIA 520 MEDIA 520 *******************************/
+
+@media screen and (max-width: 520px) {
+	
+	h1 {
+		text-align: center;
+		margin: 0;
+		font-size: 35px;
+	}
+
+	h3 {
+		font-size: 19px;
+		margin-left: 15px;
+		margin-right: 15px;
+	}
+
+	input[placeholder] {
+		font-size: 17px;
+	}
+
+	.gifFormButton {
+		font-size: 17px;
+	}
+
+	#message {
+		font-size: 18px;
+	}
+
+	img {
+		height: 225px;
+	}
+
+	.topicDiv {
+		height: 275px;
+		width: 100%;
+		margin-left: 0px;
+	}
+
+	#gifsSection {
+		margin-left: 0px;
+		margin-right: 0px;
+		padding-left: 0px;
+	}
+	
+}
+
+
+
+
