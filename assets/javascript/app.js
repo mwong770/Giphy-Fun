@@ -1,108 +1,140 @@
-// gif topic array
-var topics = ["Donald Trump", "funny animals", "1980's cartoons", "movies", "fastest cars", "football", "landmarks", "web development"];
 
-// create topic buttons and display on screen
-function renderButton() {
+$(document).ready(function(event) {
 
-	// current gifs before making buttons
-	$("#buttonsDiv").empty();
+	// gif topic array
+	var topics = ["Donald Trump", "funny animals", "1980's cartoons", "movies", "fastest cars", "football", "landmarks", "web development"];
 
-	//create a button for each array element
-	for(var i = 0; i < topics.length; i++){
+	//removes message until needed
+	$("#playOrFreeze").hide();
 
-		var topicButton = $("<button class='btn btn-primary'>");
+	// create topic buttons and display on screen
+	function renderButton() {
 
-		topicButton.addClass("topicButton");
-		topicButton.attr("data-name", topics[i]);
-        topicButton.text(topics[i]);
+		// current gifs before making buttons
+		$("#buttonsDiv").empty();
 
-        $("#buttonsDiv").append(topicButton);
-	}
-}
+		//create a button for each array element
+		for(var i = 0; i < topics.length; i++){
 
-//Display topics using giphy API
-function displayTopics(){
+			var topicButton = $("<button class='btn btn-primary'>");
 
-	//Get the topic from the button clicked and add to the URL
-	var topicName = $(this).attr("data-name");
-	var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicName + "&api_key=dc6zaTOxFJmzC&limit=10";
-	
-	// Ajax call
-	$.ajax({
-		url: queryURL,
-        method: "GET"
-	}).done(function (topicGIF){
+			topicButton.addClass("topicButton");
+			topicButton.attr("data-name", topics[i]);
+        	topicButton.text(topics[i]);
+        	topicButton.css("outline", "none"); //had to put outline: none here because does not work in css file
+        	topicButton.css("text-transform", "capitalize");
 
-		// Empty section before displaying gifs
-		$("#gifs").empty();
-
-		for(var j = 0; j < topicGIF.data.length; j++){
-
-			// Create html elements 
-			var topicDiv = $("<div class='topicDiv pull-left'>");
-			var p = $("<p>");
-			var topicImg = $("<img>");
-
-			// Set image attributes 
-			topicImg.addClass("topicImg");
-			topicImg.attr("data-state","still");
-			topicImg.attr("data-still", topicGIF.data[j].images.fixed_height_still.url);
-			topicImg.attr("data-animate", topicGIF.data[j].images.fixed_height.url);
-			
-			// Get the image url and its rating
-			p.text("Rating : " + topicGIF.data[j].rating);
-			topicImg.attr("src",topicGIF.data[j].images.fixed_height_still.url);
-
-			// Append image and its rating
-			topicDiv.append(topicImg);
-			topicDiv.append(p);
-			$("#gifs").append(topicDiv);
+        	$("#buttonsDiv").append(topicButton);
 		}
-		
-	});
-}
-
-// animates and freezes gifs
-function animateGifs(){
-
-	// Get the attributes of clicked image
-	var state = $(this).attr("data-state");
-	var animate = $(this).attr("data-animate");
-	var still = $(this).attr("data-still");
-
-	//Change url based on state
-	if(state !== 'still'){
-		$(this).attr("src", still);
-		$(this).attr("data-state",'still');
-
-	}else{
-		$(this).attr("src",animate);
-		$(this).attr("data-state",'animate');
 	}
 
-}
+	//Display topics using giphy API
+	function displayTopics() {
 
-// when click submitButton, add user typed topic to array
-$("#submitButton").on("click", function(){
+		//removes any messages
+		$("#message").html("");
 
-	//Get user input
-	var newTopic = $("#searchTerm").val().trim();
+		//Get the topic from the button clicked and add to the URL
+		var topicName = $(this).attr("data-name");
+		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicName + "&api_key=dc6zaTOxFJmzC&limit=10";
+	
+		// Ajax call
+		$.ajax({
+			url: queryURL,
+        	method: "GET"
+		}).done(function (topicGIF) {
+			console.log(topicGIF.data.length);
+			console.log(topicGIF);
+			// Empty section before displaying gifs
+			$("#gifs").empty();
 
-	// If user input has a value, append to the topic array and call the renderButton function
-	if(newTopic){
-		topics.push(newTopic);
-		renderButton();
-	}	
+		if (topicGIF.data.length > 0 ) {
 
-	// Clear the input field after rendering
-	$("#searchTerm").val("");
+			for(var j = 0; j < topicGIF.data.length; j++){
+
+				// Create html elements 
+				var topicDiv = $("<div class='topicDiv pull-left'>");
+				var p = $("<p>");
+				var topicImg = $("<img>");
+
+				// Set image attributes 
+				topicImg.addClass("topicImg");
+				topicImg.attr("data-state","still");
+				topicImg.attr("data-still", topicGIF.data[j].images.fixed_height_still.url);
+				topicImg.attr("data-animate", topicGIF.data[j].images.fixed_height.url);
+			
+				// Get the image url and its rating
+				p.text("Rating : " + topicGIF.data[j].rating);
+				topicImg.attr("src",topicGIF.data[j].images.fixed_height_still.url);
+
+				// Append image and its rating
+				topicDiv.append(topicImg);
+				topicDiv.append(p);
+				$("#gifs").append(topicDiv);
+				$("#playOrFreeze").show();
+			}
+		} 	else 
+
+				$("#message").html("No gifs match your search. Please try another button.");
+		});
+	}
+
+	// animates and freezes gifs
+	function animateGifs() {
+
+		// Get the attributes of clicked image
+		var state = $(this).attr("data-state");
+		var animate = $(this).attr("data-animate");
+		var still = $(this).attr("data-still");
+
+		//Change url based on state
+		if(state !== 'still'){
+			$(this).attr("src", still);
+			$(this).attr("data-state",'still');
+
+			}	else{
+					$(this).attr("src",animate);
+					$(this).attr("data-state",'animate');
+				}
+	}
+
+	// Render button for each animal on page load
+	renderButton();
+
+	// when click submitButton, add user typed topic to array
+	$("#submitButton").on("click", function(event) {
+		event.preventDefault();
+		//Get user input
+		var newTopic = $("#searchInput").val().trim();
+		$("#message").html("");
+		// If user input has a unique value, append it to the array and call the renderButton function
+		if(newTopic){
+			if (!topics.includes(newTopic.toLowerCase())) {
+				topics.push(newTopic.toLowerCase());
+				renderButton();
+			} 	else {
+					$("#message").html("Oops. That button already exists.");
+				}
+		}
+
+		// Clear the input field after rendering
+		$("#searchInput").val("");
+	});
+
+	//clears difs and buttons
+	$("#clearGifButton").on("click", function(clickEvent) {
+		$("#buttonsDiv").empty();
+		$("#playOrFreeze").hide();
+		$("#gifs").empty();
+		$("#message").html("");
+		topics = [];
+	});
+
+	// When clicking on any of the button in the animal list, call displayAnimals to display animals
+	$(document).on("click", ".topicButton", displayTopics);
+
+	// When click on any of image displayed, call animateAnimals function to animate
+	$(document).on("click", ".topicImg", animateGifs);
+
 });
 
-// When clicking on any of the button in the animal list, call displayAnimals to display animals
-$(document).on("click", ".topicButton", displayTopics);
-
-// When click on any of image displayed, call animateAnimals function to animate
-$(document).on("click", ".topicImg", animateGifs);
-
-// Render button for each animal on page load
-renderButton();

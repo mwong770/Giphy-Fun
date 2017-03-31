@@ -39,16 +39,24 @@ body {
 	border-radius: 0 0 20px 20px;
 }
 
-button, input {
+button, #searchInput {
 	border-radius: 10px;
 	text-align: center;
+	outline: none;
 }
 
-input {
+#searchInput {
 	width: 100%;
 	float: right;
 	border: solid #B2FF9E 2px;
 	padding: 3px;
+	background: url("../images/searchIcon.png") no-repeat white;
+	background-position: right;
+	background-size: contain;
+}
+
+#searchInput:focus {
+	border: solid #1DD3B0 3px;
 }
 
 #submitButton {
@@ -66,6 +74,21 @@ float: left;
 background-color: #1DD3B0;
 }
 
+#submitButton:hover {
+	border: solid #1DD3B0 2px;
+	background-color: #B2FF9E;
+}
+
+#clearGifButton:hover {
+	border: solid #1DD3B0 2px;
+	background-color: #B2FF9E;
+}
+
+#message {
+	height: 20px;
+	color: red;
+}
+
 .topicButton {
 	min-width: 15%;
 	background-color: #086375;
@@ -73,7 +96,16 @@ background-color: #1DD3B0;
 	text-transform: capitalize;
 	margin: 5px;
 	border-radius: 10px;
+}
 
+.topicButton:hover {
+	background-color: #1DD3B0;
+	border: solid 2px #086375;
+}
+
+.topicButton:focus {
+	background-color: #1DD3B0;
+	border: solid 2px #086375;
 }
 
 /*rating*/
@@ -88,16 +120,6 @@ background-color: #1DD3B0;
 	border-radius: 10px;
 }
 
-/*.selectedGifTopic {
-	background: #086375;
-	border: solid black 2px;
-	text-align: center;
-	width: 80%;
-	border-radius: 10px;
-	text-align: center;
-	text-transform: capitalize;
-}*/
-
 .giphyDiv {
 	background-color: rgba(0,0,0,0.7);
 	display: inline-block;
@@ -109,14 +131,18 @@ background-color: #1DD3B0;
 
 img {
 	width: 100%;
-	max-height: 200px;
+	height: 200px;
+}
+
+img:hover {
+	opacity: .5;
 }
 
 .topicDiv {
 	height: 250px;
 	width: 23%;
 	margin: 1%;
-	border: 2px solid white;
+	border: 3px solid white;
 	overflow: none;
 }
 
