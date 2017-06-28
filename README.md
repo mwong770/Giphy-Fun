@@ -1,8 +1,8 @@
-# GiphyAPI (Fun With Gifs)
+# GiphyAPI (Fun with Gifs)
 
-A dynamic web page that populates with gifs of the users' choice 
+A dynamic web page that populates with gifs of the user's choice 
 
-[Try Out Fun With Gifs](https://mwong770.github.io/GiphyAPI/)
+[Try Out Fun with Gifs](https://mwong770.github.io/GiphyAPI/)
 
 
 ## Table of Contents
@@ -35,11 +35,11 @@ A dynamic web page that populates with gifs of the users' choice
 
 ## <a name="features"></a> :boom: Features
 
-* When the user clicks a gif topic, it displays 10 non-animated gifs
-* When the user clicks one of the gifs, it animates
-* When the user clicks an animated gif, it stops playing
+* When users click a gif topic, it displays 10 non-animated gifs
+* When users click one of the gifs, it animates
+* When users click an animated gif, it stops playing
 * Users can see the gifs' rating (PG, G, so on) displayed under it 
-* The user can create additional topic buttons by inputting their desired topic
+* Users can create additional topic buttons by inputting a topic and clicking 'Add'
 * Users can clear the buttons and gifs by clicking 'Clear All'
 
 
@@ -52,4 +52,4 @@ A dynamic web page that populates with gifs of the users' choice
 
 If you have any questions or comments, feel free to message me on [LinkedIn](https://www.linkedin.com/in/maria-wong/).
 
- ### Thanks for checking out Fun With Gifs!
+ ### Thanks for checking out Fun with Gifs!
