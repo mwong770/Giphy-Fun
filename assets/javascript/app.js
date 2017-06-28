@@ -1,10 +1,10 @@
 
 $(document).ready(function(event) {
 
-	// gif topic array
+	// saves topics in array
 	var topics = ["donald trump", "funny animals", "1980's cartoons", "movies", "fastest cars", "football", "landmarks", "web development"];
 
-	// Initial Ajax call
+	// makes initial AJAX call
 	$.ajax({
 		url: "https://api.giphy.com/v1/gifs/search?q=funny&api_key=dc6zaTOxFJmzC&limit=10",
         method: "GET"
@@ -12,16 +12,16 @@ $(document).ready(function(event) {
 		ajaxResponse(topicGIF);
 	});
 
-	//removes message until needed
+	// removes message until needed
 	$("#playOrFreeze").hide();
 
-	// create topic buttons and display on screen
+	// creates topic buttons and displays them on screen
 	function renderButton() {
 
-		// current gifs before making buttons
+		// empties current gifs before making buttons
 		$("#buttonsDiv").empty();
 
-		//create a button for each array element
+		// creates a button for each array element
 		for(var i = 0; i < topics.length; i++){
 
 			var topicButton = $("<button class='btn btn-primary'>");
@@ -29,30 +29,30 @@ $(document).ready(function(event) {
 			topicButton.addClass("topicButton");
 			topicButton.attr("data-name", topics[i]);
         	topicButton.text(topics[i]);
-        	topicButton.css("outline", "none"); //had to put outline: none here because does not work in css file
+        	topicButton.css("outline", "none"); 
         	topicButton.css("text-transform", "capitalize");
 
         	$("#buttonsDiv").append(topicButton);
 		}
 	}
 
-	//Display topics using giphy API
+	// displays topics using giphy API
 	function displayTopics() {
 
-		//removes any messages
+		// removes any messages
 		$("#message").html("");
 
-		//Get the topic from the button clicked and add to the URL
+		// gets the topic from the button clicked and adds it to the URL
 		var topicName = $(this).attr("data-name");
 		var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topicName + "&api_key=dc6zaTOxFJmzC&limit=10";
 	
-		// Ajax call
+		// makes an AJAX call
 		$.ajax({
 			url: queryURL,
         	method: "GET"
 		}).done(function (topicGIF) {
 
-				// Empty section before displaying gifs
+				// empties section before displaying gifs
 				$("#gifs").empty();
 
 				if (topicGIF.data.length > 0 ) {
@@ -68,25 +68,25 @@ $(document).ready(function(event) {
 		});
 	}
 
-	//handles response received from ajax call
+	// handles response received from AJAX call
 	function ajaxResponse(response) {
 		for (var j = 0; j < response.data.length; j++) {
-			// Create html elements 
+			// creates html elements 
 			var topicDiv = $("<div class='topicDiv pull-left'>");
 			var p = $("<p>");
 			var topicImg = $("<img>");
 				
-			// Set image attributes 
+			// sets image attributes 
 			topicImg.addClass("topicImg");
 			topicImg.attr("data-state","still");
 			topicImg.attr("data-still", response.data[j].images.fixed_height_still.url);
 			topicImg.attr("data-animate", response.data[j].images.fixed_height.url);
 			
-			// Get the image url and its rating	
+			// gets the image url and it's rating	
 			p.text("Rating : " + response.data[j].rating);
 			topicImg.attr("src",response.data[j].images.fixed_height_still.url);
 
-			// Append image and its rating
+			// appends image and it's rating
 			topicDiv.append(topicImg);
 			topicDiv.append(p);
 			$("#gifs").append(topicDiv);
@@ -97,32 +97,32 @@ $(document).ready(function(event) {
 	// animates and freezes gifs
 	function animateGifs() {
 
-		// Get the attributes of clicked image
+		// gets the attributes of clicked image
 		var state = $(this).attr("data-state");
 		var animate = $(this).attr("data-animate");
 		var still = $(this).attr("data-still");
 
-		//Change url based on state
-		if(state !== 'still'){
+		// changes url based on state
+		if(state !== "still"){
 			$(this).attr("src", still);
-			$(this).attr("data-state",'still');
+			$(this).attr("data-state","still");
 
 			}	else{
-					$(this).attr("src",animate);
-					$(this).attr("data-state",'animate');
+					$(this).attr("src", animate);
+					$(this).attr("data-state", "animate");
 				}
 	}
 
-	// Render button for each animal on page load
+	// renders button for each animal on page load
 	renderButton();
 
-	// when click submitButton, add user typed topic to array
+	// when click submitButton, adds user typed topic to array
 	$("#submitButton").on("click", function(event) {
 		event.preventDefault();
-		//Get user input
+		// gets user input
 		var newTopic = $("#searchInput").val().trim();
 		$("#message").html("");
-		// If user input has a unique value, append it to the array and call the renderButton function
+		// if user input has a unique value, appends it to the array and calls the renderButton function
 		if(newTopic){
 			if (!topics.includes(newTopic.toLowerCase())) {
 				topics.push(newTopic.toLowerCase());
@@ -132,11 +132,11 @@ $(document).ready(function(event) {
 				}
 		}
 
-		// Clear the input field after rendering
+		// clears the input field after rendering
 		$("#searchInput").val("");
 	});
 
-	//clears difs and buttons
+	// clears difs and buttons
 	$("#clearGifButton").on("click", function(clickEvent) {
 		$("#buttonsDiv").empty();
 		$("#playOrFreeze").hide();
@@ -145,10 +145,10 @@ $(document).ready(function(event) {
 		topics = [];
 	});
 
-	// When clicking on any of the button in the animal list, call displayAnimals to display animals
+	// when clicking on any of the button in the animal list, calls displayAnimals to display animals
 	$(document).on("click", ".topicButton", displayTopics);
 
-	// When click on any of image displayed, call animateAnimals function to animate
+	// when clicking on any of image displayed, calls animateAnimals function to animate
 	$(document).on("click", ".topicImg", animateGifs);
 
 });
