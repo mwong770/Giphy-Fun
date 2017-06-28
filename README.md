@@ -2,7 +2,7 @@
 
 A dynamic web page that populates with gifs of the user's choice 
 
-[Try Out Fun with Gifs](https://mwong770.github.io/GiphyAPI/)
+[Check Out Fun with Gifs](https://mwong770.github.io/GiphyAPI/)
 
 
 ## Table of Contents
