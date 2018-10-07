@@ -1,4 +1,4 @@
-# GiphyAPI (Fun with Gifs)
+# Giphy-Fun (Fun with Gifs)
 
 A dynamic web page that populates with gifs of the user's choice 
 
